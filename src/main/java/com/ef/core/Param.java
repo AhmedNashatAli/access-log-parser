@@ -1,4 +1,4 @@
-package com.ef;
+package com.ef.core;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,10 +8,10 @@ import java.util.Date;
  * Created by Ahmed Nashaat on 10/13/2017.
  */
 public class Param {
-    private String filePath;
-    private Date startDate;
-    private String duration;
-    private int threshold;
+    private String filePath="";
+    private Date startDate=new Date();
+    private String duration="Hourly";
+    private int threshold=0;
 
 
     public String getFilePath() {
@@ -30,7 +30,7 @@ public class Param {
         return threshold;
     }
 
-    Param(String [] args){
+    public Param(String[] args){
         for (String arg:args) {
             String splits[]=arg.split("=");
             String argName=splits[0].replace("--", "").toLowerCase().trim();
@@ -50,7 +50,7 @@ public class Param {
                     default: System.out.println("Error parsing no case for "+argName);
                 }
             }catch (ParseException e){
-                System.out.println("Error parsing : "+argName);
+                System.out.println("Error parsing no case for S"+argName);
             }
         }
     }
